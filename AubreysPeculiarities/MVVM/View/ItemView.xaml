@@ -1,0 +1,782 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AubreysPeculiarities.MVVM.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:AubreysPeculiarities.MVVM.ViewModel"
+    xmlns:AubreysPeculiarities="clr-namespace:AubreysPeculiarities"
+    x:Class="AubreysPeculiarities.MVVM.View.ItemView"
+    x:Name="userControl"
+    d:DesignHeight="505"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <viewModel:ItemViewModel />
+    </UserControl.DataContext>
+    <Grid
+        Width="{Binding ActualWidth, ElementName=userControl, Mode=OneWay}"
+        Height="{Binding ActualHeight, ElementName=userControl, Mode=OneWay}"
+        MaxHeight="{Binding ActualHeight, ElementName=userControl, Mode=OneWay}">
+
+        <StackPanel Orientation="Vertical">
+
+            <!-- Start of Column Header Buttons -->
+            <StackPanel Orientation="Horizontal">
+                <Border Width="250" 
+                        Height="30"
+                        Background="#FF252422"
+                        CornerRadius="5">
+                    <Button x:Name="NameColumnHeaderButton" Background="Transparent" BorderBrush="Transparent"
+                            Content="Name"
+                            FontFamily="Fonts/#Poppins"
+                            FontWeight="SemiBold"
+                            FontSize="20"
+                            BorderThickness="0" IsDefault="True" Command="{Binding OrderByCommand}"
+                            CommandParameter="name" IsTabStop="False">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Setters>
+                                    <Setter Property="Foreground" Value="DarkSlateGray"/>
+                                </Style.Setters>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="name">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="nameDescending">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+                <Border Width="200" 
+                        Height="30"
+                        Background="#FF252422"
+                        CornerRadius="5"
+                        Margin="5,0,0,0">
+                    <Button Background="Transparent" BorderBrush="Transparent"
+                            Content="Type"
+                            FontFamily="Fonts/#Poppins"
+                            FontWeight="SemiBold"
+                            FontSize="20"
+                            Command="{Binding OrderByCommand}"
+                            CommandParameter="type">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Setters>
+                                    <Setter Property="Foreground" Value="DarkSlateGray"/>
+                                </Style.Setters>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="type">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="typeDescending">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+                <Border Width="180" 
+                        Height="30"
+                        Background="#FF252422"
+                        CornerRadius="5"
+                        Margin="5,0,0,0">
+                    <Button Background="Transparent" BorderBrush="Transparent"
+                            Content="Weight"
+                            FontFamily="Fonts/#Poppins"
+                            FontWeight="SemiBold"
+                            FontSize="20"
+                            Command="{Binding OrderByCommand}"
+                            CommandParameter="weight">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Setters>
+                                    <Setter Property="Foreground" Value="DarkSlateGray"/>
+                                </Style.Setters>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="weight">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="weightDescending">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+                <Border Width="120" 
+                        Height="30"
+                        Background="#FF252422"
+                        CornerRadius="5"
+                        Margin="5,0,0,0">
+                    <Button Background="Transparent" BorderBrush="Transparent"
+                            Content="Cost"
+                            FontFamily="Fonts/#Poppins"
+                            FontWeight="SemiBold"
+                            FontSize="20"
+                            Command="{Binding OrderByCommand}"
+                            CommandParameter="cost">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Setters>
+                                    <Setter Property="Foreground" Value="DarkSlateGray"/>
+                                </Style.Setters>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="cost">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ListOrderedBy}" Value="costDescending">
+                                        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+            </StackPanel>
+            
+            <!-- Item ListView Start -->
+            <ListView
+                x:Name="ItemListView"
+                Width="{Binding ActualWidth, ElementName=userControl, Mode=OneWay}"
+                Height="300"
+                AlternationCount="2"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Foreground="White"
+                ItemContainerStyle="{DynamicResource ListViewItemTheme}"
+                ItemsSource="{Binding FilteredItemList, UpdateSourceTrigger=PropertyChanged}"
+                ScrollViewer.CanContentScroll="True"
+                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                SelectedIndex="0"
+                SizeChanged="ItemListView_SizeChanged"
+                Style="{DynamicResource myItemListViewStyle}" 
+                IsTabStop="True" 
+                SelectionChanged="ItemListView_SelectionChanged" FontFamily="Poppins"
+                >
+                <ListView.View>
+                    <GridView x:Name="ItemGridView" AllowsColumnReorder="True">
+                        <GridViewColumn Header="Name" HeaderContainerStyle="{StaticResource ItemListHeaderThemeBlue}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        FontFamily="Fonts/#Poppins"
+                                        FontSize="16"
+                                        Text="{Binding Name}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Type" HeaderContainerStyle="{StaticResource ItemListHeaderThemeGreen}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Fonts/#Poppins"
+                                        FontSize="14"
+                                        Text="{Binding Type.Name}"
+                                        TextAlignment="Center" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                            <GridViewColumn Header="Weight" HeaderContainerStyle="{StaticResource ItemListHeaderThemeOrange}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            HorizontalAlignment="Right"
+                                            FontFamily="Fonts/#Poppins"
+                                            FontSize="14"
+                                            Text="{Binding Weight}"
+                                            TextAlignment="Center" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            FontFamily="Fonts/#Poppins"
+                                            FontSize="14"
+                                            Foreground="DarkGray"
+                                            Text="{Binding LbString}"
+                                            TextAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Cost" HeaderContainerStyle="{StaticResource ItemListHeaderThemeYellow}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            HorizontalAlignment="Right"
+                                            FontFamily="Fonts/#Poppins"
+                                            FontSize="14"
+                                            Text="{Binding ValueAbsolute}"
+                                            TextAlignment="Center" />
+                                        <Image
+                                            Grid.Column="1"
+                                            Width="15"
+                                            Height="15"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Source="{Binding CoinImagePath}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!--  Lower Section Start  -->
+            <Border x:Name="SelectedItemInfoBox" 
+                MaxHeight="235"
+                Background="#FF3E3E3E"
+                CornerRadius="10" 
+                Visibility="{Binding HasItems, Converter={StaticResource BoolToVis}, ElementName=ItemListView, Mode=OneWay}">
+                <Grid Margin="5,5,5,5" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <!--  Item Title Image and Name Start  -->
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                        <Image
+                            Width="30"
+                            Height="30"
+                            Source="{Binding ImageScroll}" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.Name, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                    </StackPanel>
+                    <!--  Item Type Image and Type Text Start  -->
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                        <Image
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Width="30"
+                            Height="30"
+                            Source="{Binding SelectedItem.TypeImagePath, ElementName=ItemListView}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.Type.Name, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                    </StackPanel>
+                    <!--  Coin value and Weight Start  -->
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                        <Image
+                            Width="15"
+                            Height="15"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Source="{Binding SelectedItem.CoinImagePath, ElementName=ItemListView}" />
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.ValueAbsolute, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                        <Image
+                            Width="15"
+                            Height="15"
+                            Margin="10,0,0,0"
+                            Source="{Binding ImageLbs}" />
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.Weight, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                    </StackPanel>
+                    <!--  Item Source Book and Page Start  -->
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Image
+                            Width="20"
+                            Height="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Source="{Binding ImageBook}"
+                            Visibility="{Binding SelectedItem.HasSource, ElementName=ItemListView, Converter={StaticResource BoolToVis}}" />
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.Source, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="White"
+                            Text="p."
+                            TextAlignment="Left"
+                            TextWrapping="Wrap"
+                            Visibility="{Binding SelectedItem.HasPageNumber, Converter={StaticResource BoolToVis}, ElementName=ItemListView}" FontFamily="Poppins" />
+                        <TextBlock
+                            x:Name="itemSourcePageText"
+                            Margin="5,0,5,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.Page, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                    </StackPanel>
+                    <!--  Item Description Start  -->
+                    <ScrollViewer
+                        Grid.Row="1"
+                        Grid.RowSpan="3"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        CanContentScroll="True"
+                        HorizontalScrollBarVisibility="Disabled"
+                        Template="{DynamicResource myItemScrollViewer}"
+                        VerticalScrollBarVisibility="Auto">
+                        <Border
+                            Padding="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="#1A1824"
+                            CornerRadius="5">
+                            <StackPanel
+                                Grid.Row="1"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Orientation="Vertical">
+                                <TextBlock
+                                    FontFamily="Fonts/#Poppins"
+                                    FontSize="13"
+                                    Foreground="White"
+                                    Text="{Binding SelectedItem.Entries1, ElementName=ItemListView}" 
+                                    TextWrapping="Wrap" />
+                                <TextBlock
+                                    FontFamily="Fonts/#Poppins"
+                                    FontSize="13"
+                                    Foreground="White"
+                                    Text="{Binding SelectedItem.Entries2, ElementName=ItemListView}"
+                                    TextWrapping="Wrap"
+                                    Visibility="{Binding SelectedItem.HasEntries2, ElementName=ItemListView, Converter={StaticResource BoolToVis}}" />
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                    <!--  Item Proficiencies Listbox + Tooltip Start  -->
+                    <ListBox 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        VerticalContentAlignment="Top"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Cursor="Pen"
+                        ItemContainerStyle="{DynamicResource ListBoxItemPropertyTheme}"
+                        ItemsSource="{Binding SelectedItem.PropertyList, ElementName=ItemListView}"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Poppins">
+                        <ListBox.ItemsPanel>
+                            <!--  Item Template with wrap-panel that filles up left to rigt.  -->
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="200" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <!--  DataTemplate for each Item in the Listbox  -->
+                            <DataTemplate>
+                                <Border x:Name="ItemPropertyBorderBackground" CornerRadius="5">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image
+                                            Width="20"
+                                            Height="20"
+                                            Source="{Binding PropertyImage}" />
+                                        <!--  Set Tooltip Delay and so on in this textbox  -->
+                                        <TextBlock
+                                            Margin="1,0,5,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Fonts/#Poppins"
+                                            FontSize="14"
+                                            Foreground="White"
+                                            Text="{Binding Name}"
+                                            ToolTipService.InitialShowDelay="0"
+                                            ToolTipService.ShowDuration="60000">
+
+                                            <!--  End of Item Proficiency Custom Tooltip  -->
+            <!--  Start of Item Proficiency Custom Tooltip  -->
+                                            <TextBlock.ToolTip>
+                                                <ToolTip x:Name="PropertyToolTip"
+                                                    Background="Transparent"
+                                                    BorderBrush="Transparent"
+                                                    Foreground="White">
+                                                    <Border Background="#22202F" CornerRadius="5">
+                                                        <StackPanel>
+                                                            <Border x:Name="tooltipBd" CornerRadius="5">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <Image
+                                                                        Width="30"
+                                                                        Height="30"
+                                                                        Source="{Binding PropertyImage}" />
+                                                                    <Label
+                                                                        Margin="3,0,0,0"
+                                                                        VerticalAlignment="Center"
+                                                                        Content="{Binding Name}"
+                                                                        FontFamily="Fonts/#Poppins"
+                                                                        FontSize="14"
+                                                                        Foreground="White" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                            <Border Background="#FF3E3E3E" CornerRadius="5">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <StackPanel
+                                                                        Grid.Row="0"
+                                                                        Grid.RowSpan="1"
+                                                                        Grid.Column="0"
+                                                                        Grid.ColumnSpan="2"
+                                                                        Orientation="Vertical">
+                                                                        <TextBlock
+                                                                            MaxWidth="500"
+                                                                            Margin="5"
+                                                                            FontFamily="Fonts/#Poppins"
+                                                                            Text="{Binding Entries1}"
+                                                                            TextWrapping="Wrap" />
+                                                                        <TextBlock
+                                                                            MaxWidth="500"
+                                                                            Margin="5,0,5,5"
+                                                                            FontFamily="Fonts/#Poppins"
+                                                                            Text="{Binding Entries2}"
+                                                                            TextWrapping="Wrap" />
+                                                                    </StackPanel>
+                                                                    <StackPanel
+                                                                        Grid.Row="1"
+                                                                        Grid.Column="1"
+                                                                        HorizontalAlignment="Right"
+                                                                        VerticalAlignment="Center"
+                                                                        Orientation="Horizontal">
+
+                                                                        <TextBlock
+                                                                            Margin="5,0,0,0"
+                                                                            HorizontalAlignment="Right"
+                                                                            VerticalAlignment="Center"
+                                                                            FontSize="12"
+                                                                            Foreground="Gray"
+                                                                            Text="{Binding Source}"
+                                                                            TextAlignment="Left"
+                                                                            TextWrapping="Wrap" />
+                                                                        <TextBlock
+                                                                            Margin="5,0,0,0"
+                                                                            HorizontalAlignment="Right"
+                                                                            VerticalAlignment="Center"
+                                                                            FontSize="12"
+                                                                            Foreground="Gray"
+                                                                            Text="p."
+                                                                            TextAlignment="Left"
+                                                                            TextWrapping="Wrap" />
+                                                                        <TextBlock
+                                                                            Margin="5,0,5,0"
+                                                                            HorizontalAlignment="Right"
+                                                                            VerticalAlignment="Center"
+                                                                            FontSize="12"
+                                                                            Foreground="Gray"
+                                                                            Text="{Binding Page}"
+                                                                            TextAlignment="Left"
+                                                                            TextWrapping="Wrap" />
+                                                                        <Image
+                                                                            Width="20"
+                                                                            Height="20"
+                                                                            Margin="5,0,5,5"
+                                                                            HorizontalAlignment="Right"
+                                                                            VerticalAlignment="Center"
+                                                                            Source="{Binding PropertySourceImage}" />
+                                                                    </StackPanel>
+                                                                </Grid>
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Start of DataTemplate Triggers for Background on different properties -->
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Name}" Value="Two-Handed">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF653032"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF653032"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Ammunition">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF283C20"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF283C20"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Burst Fire">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FFDFD991"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FFDFD991"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Finesse">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF262D38"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF262D38"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Heavy">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF100524"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF100524"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Light">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF1B2405"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF1B2405"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Loading">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF382632"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF382632"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Reach">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF060524"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF060524"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Reload">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF4D908E"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF4D908E"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Special">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF382632"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF382632"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Thrown">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF052409"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF052409"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Versatile">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF514D18"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF514D18"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Range">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF051923"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF051923"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Melee">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF252422"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF252422"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Martial">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FFD25F3D"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FFD25F3D"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Simple">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF5C462F"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF5C462F"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Focus">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF442E5B"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF442E5B"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Futuristic">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FFDFD991"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FFDFD991"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Consumable">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF2E5B58"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF2E5B58"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Warding">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF2E3F5B"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF2E3F5B"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Trade Good">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF03071E"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF03071E"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Container">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF051923"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF051923"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Name}" Value="Utility">
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF0077B6"/>
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF0077B6"/>
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <!--  Melee Damage and Damage Image and Versatility and Range Start  -->
+                    <StackPanel
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Orientation="Horizontal"
+                        Visibility="{Binding SelectedItem.IsWeaponVisibility, ElementName=ItemListView, Converter={StaticResource BoolToVis}}">
+                        <Image
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Width="30"
+                            Height="30"
+                            Source="{Binding SelectedItem.DamageTypeImage, ElementName=ItemListView}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.Dmg1, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.DmgType, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="White"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap"
+                            Visibility="{Binding SelectedItem.HasVersatilityVisibility, ElementName=ItemListView, Converter={StaticResource BoolToVis}}" FontFamily="Poppins">
+                                <Run Text="(" />
+                                <Run Text=" "/>
+                                <Run Text="{Binding SelectedItem.VersatilityDmg, ElementName=ItemListView}" />
+                                <Run Text=" "/>
+                                <Run Text=")" />
+                        </TextBlock>
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="White"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap"
+                            Visibility="{Binding SelectedItem.HasRangeVisibility, ElementName=ItemListView, Converter={StaticResource BoolToVis}}" FontFamily="Poppins">
+                                <Run Text="(" />
+                                <Run Text=" "/>
+                                <Run Text="{Binding SelectedItem.Range, ElementName=ItemListView}" />
+                                <Run Text=" "/>
+                                <Run Text=")" />
+                            </TextBlock>
+                    </StackPanel>
+                    <!--  Armor Image text and Values Start  -->
+                    <StackPanel
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Orientation="Horizontal"
+                        Visibility="{Binding SelectedItem.IsArmorVisibility, ElementName=ItemListView, Converter={StaticResource BoolToVis}}">
+                        <Image
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Width="30"
+                            Height="30"
+                            Source="{Binding ImageArmor}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.ArmorAC, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="White"
+                            Text="{Binding SelectedItem.ArmorTypeString, ElementName=ItemListView}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" FontFamily="Poppins" />
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+            <!--  Lower Section End  -->
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1FC2C695-A2DE-4A67-9B18-8384504C61C6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AubreysPeculiarities</RootNamespace>
+    <AssemblyName>AubreysPeculiarities</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="MVVM\Model\Item.cs" />
+    <Compile Include="MVVM\Model\Shop.cs" />
+    <Compile Include="MVVM\Model\ShopType.cs" />
+    <Compile Include="MVVM\ViewModel\RequestSearch.cs" />
+    <Compile Include="MVVM\ViewModel\ToolTipViewModel.cs" />
+    <Compile Include="Repository\ItemTypeClassMap.cs" />
+    <Compile Include="Dictionary\StringDictionary.cs" />
+    <Compile Include="Dictionary\ImagePathDictionary.cs" />
+    <Compile Include="Repository\ItemPropertyClassMap.cs" />
+    <Compile Include="Repository\ItemPropertyRepository.cs" />
+    <Compile Include="Repository\ItemTypeRepository.cs" />
+    <Compile Include="Repository\ItemRepository.cs" />
+    <Compile Include="Service\ItemPropertyService.cs" />
+    <Compile Include="Service\SearchService.cs" />
+    <Compile Include="Service\ItemService.cs" />
+    <Compile Include="Service\ItemTypeService.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MVVM\View\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\AlchemistView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ArcaneSuppliesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ArmorerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\CreateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\GeneralStoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ShopsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\WeaponSmithView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ItemListViewTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\ItemPropertyListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ItemPropertyToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\MenuButtonTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\myColumnHeaderContainerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\myItemScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\myRepeatButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\myScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\shopSubMenuTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\SquareButtonTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\TextboxTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MVVM\Model\ItemProperty.cs" />
+    <Compile Include="MVVM\Model\ItemType.cs" />
+    <Compile Include="Repository\ItemClassMap.cs" />
+    <Compile Include="MVVM\ViewModel\AboutViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\AlchemistViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ArcaneSuppliesViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ArmorerViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\CreateViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\GeneralStoreViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\HomeViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ItemViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\RequestChangeCurrentView.cs" />
+    <Compile Include="MVVM\ViewModel\SettingsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ShopsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\WeaponSmithViewModel.cs" />
+    <Compile Include="MVVM\View\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\AlchemistView.xaml.cs">
+      <DependentUpon>AlchemistView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ArcaneSuppliesView.xaml.cs">
+      <DependentUpon>ArcaneSuppliesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ArmorerView.xaml.cs">
+      <DependentUpon>ArmorerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\CreateView.xaml.cs">
+      <DependentUpon>CreateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\GeneralStoreView.xaml.cs">
+      <DependentUpon>GeneralStoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ItemView.xaml.cs">
+      <DependentUpon>ItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ShopsView.xaml.cs">
+      <DependentUpon>ShopsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\WeaponSmithView.xaml.cs">
+      <DependentUpon>WeaponSmithView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Notes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="CSV\item.csv" />
+    <None Include="CSV\itemProperty.csv" />
+    <None Include="CSV\itemType.csv" />
+    <Resource Include="Fonts\Poppins-Black.ttf" />
+    <Resource Include="Fonts\Poppins-BlackItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Bold.ttf" />
+    <Resource Include="Fonts\Poppins-BoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraBold.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraLight.ttf" />
+    <Resource Include="Fonts\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Italic.ttf" />
+    <Resource Include="Fonts\Poppins-Light.ttf" />
+    <Resource Include="Fonts\Poppins-LightItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Medium.ttf" />
+    <Resource Include="Fonts\Poppins-MediumItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Regular.ttf" />
+    <Resource Include="Fonts\Poppins-SemiBold.ttf" />
+    <Resource Include="Fonts\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Poppins-Thin.ttf" />
+    <Resource Include="Fonts\Poppins-ThinItalic.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\alchemyIcon.png" />
+    <Resource Include="Images\armorIcon.png" />
+    <Resource Include="Images\coinIcon.png" />
+    <Resource Include="Images\craftIcon.png" />
+    <Resource Include="Images\itemIcon.png" />
+    <Resource Include="Images\spellbookIcon.png" />
+    <Resource Include="Images\swordIcon.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\copperCoinIcon.png" />
+    <Resource Include="Images\goldCoinIcon.png" />
+    <Resource Include="Images\silverCoinIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\staffIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\artisanToolsIcon.png" />
+    <Resource Include="Images\bagIcon.png" />
+    <Resource Include="Images\cardGameIcon.png" />
+    <Resource Include="Images\deathIcon.png" />
+    <Resource Include="Images\dragonIcon.png" />
+    <Resource Include="Images\enhanced weapon.png" />
+    <Resource Include="Images\fireSpellIcon.png" />
+    <Resource Include="Images\gemstoneIcon.png" />
+    <Resource Include="Images\instrumentIcon.png" />
+    <Resource Include="Images\mapIcon.png" />
+    <Resource Include="Images\potionIcon.png" />
+    <Resource Include="Images\scrollIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\heavyArmorIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\shieldIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\mediumArmorIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\wizardIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\consumableIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\meleeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bowArrowIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backpackIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\prayerBeedsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LbsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bookIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\archery-target.png" />
+    <Resource Include="Images\arrow-dunk.png" />
+    <Resource Include="Images\arrow-flights.png" />
+    <Resource Include="Images\arrowed.png" />
+    <Resource Include="Images\bindle.png" />
+    <Resource Include="Images\cash.png" />
+    <Resource Include="Images\catch.png" />
+    <Resource Include="Images\crossed-swords.png" />
+    <Resource Include="Images\damageIcon.png" />
+    <Resource Include="Images\femaleWizardIcon.png" />
+    <Resource Include="Images\flail.png" />
+    <Resource Include="Images\gloves.png" />
+    <Resource Include="Images\leather-armor.png" />
+    <Resource Include="Images\pitchfork.png" />
+    <Resource Include="Images\pocket-bow.png" />
+    <Resource Include="Images\quiver.png" />
+    <Resource Include="Images\receive-money.png" />
+    <Resource Include="Images\rolling-dice-cup.png" />
+    <Resource Include="Images\rule-book.png" />
+    <Resource Include="Images\sharp-axe.png" />
+    <Resource Include="Images\sword-clash.png" />
+    <Resource Include="Images\sword-wound.png" />
+    <Resource Include="Images\wizard-staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rope-coil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clockwise-rotation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pierced-body.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\weight-lifting-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\plain-dagger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\assassin-pocket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\magic-axe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layered-armor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm">
+      <Version>8.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="CsvHelper">
+      <Version>29.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="DnD5e">
+      <Version>1.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Mudless.NameGenerator">
+      <Version>1.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

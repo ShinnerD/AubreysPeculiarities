@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   <Style x:Key="ItemPropertyToolTip"
+   TargetType="ToolTip">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <StackPanel>
+                        <Label Content="{TemplateBinding Content}" FontWeight="Bold" Background="#272537" Foreground="White">
+                        </Label>
+                        <TextBlock Padding="10" TextWrapping="WrapWithOverflow" Width="200">
+
+                        </TextBlock>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

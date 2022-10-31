@@ -1,0 +1,70 @@
+﻿<Application
+    x:Class="AubreysPeculiarities.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AubreysPeculiarities"
+    xmlns:view="clr-namespace:AubreysPeculiarities.MVVM.View"
+    xmlns:viewModel="clr-namespace:AubreysPeculiarities.MVVM.ViewModel"
+    Startup="Application_Startup_1"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
+                <ResourceDictionary Source="Theme/TextBoxTheme.xaml" />
+                <ResourceDictionary Source="Theme/SquareButtonTheme.xaml" />
+                <ResourceDictionary Source="Theme/ItemListViewTheme.xaml" />
+                <ResourceDictionary Source="Theme/myRepeatButton.xaml" />
+                <ResourceDictionary Source="Theme/myScrollBar.xaml" />
+                <ResourceDictionary Source="Theme/myItemScrollViewer.xaml" />
+                <ResourceDictionary Source="Theme/shopSubMenuTheme.xaml" />
+                <ResourceDictionary Source="Theme/ItemPropertyListBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ItemViewModel}">
+                <view:ItemView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ShopsViewModel}">
+                <view:ShopsView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CreateViewModel}">
+                <view:CreateView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                <view:SettingsView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AboutViewModel}">
+                <view:AboutView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:GeneralStoreViewModel}">
+                <view:GeneralStoreView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ArmorerViewModel}">
+                <view:ArmorerView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:WeaponSmithViewModel}">
+                <view:WeaponSmithView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AlchemistViewModel}">
+                <view:AlchemistView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ArcaneSuppliesViewModel}">
+                <view:ArcaneSuppliesView />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
