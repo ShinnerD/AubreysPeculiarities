@@ -52,6 +52,7 @@
                 <StackPanel Grid.Row="1" DockPanel.Dock="Top">
 
                     <RadioButton
+                        x:Name="HomeMenuButton"
                         Height="50"
                         Command="{Binding HomeViewCommand}"
                         Content="Home"
@@ -59,9 +60,11 @@
                         Foreground="White"
                         IsChecked="{Binding HomeButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" />
+                        Style="{StaticResource MenuButtonTheme}"
+                        GroupName="MainMenuLayer"/>
 
                     <RadioButton
+                        x:Name="ItemsMenuButton"
                         Height="50"
                         Command="{Binding ItemViewCommand}"
                         Content="Items"
@@ -69,17 +72,77 @@
                         Foreground="White"
                         IsChecked="{Binding ItemButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" />
+                        Style="{StaticResource MenuButtonTheme}" 
+                        GroupName="MainMenuLayer"/>
+
+                    <StackPanel
+                        x:Name="ItemsSubMenu"
+                        Margin="0,0,0,0"
+                        Background="#272545"
+                        Orientation="Vertical"
+                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                        Visibility="{Binding IsChecked, ElementName=ItemsMenuButton, Converter={StaticResource BoolToVis}}">
+                        <RadioButton
+                            Height="40"
+                            Command="{Binding ItemViewCommand}"
+                            Content="Standard Items"
+                            FontSize="14"
+                            Foreground="White"
+                            IsTabStop="False"
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="ItemsMenuLayer"
+                            IsChecked="{Binding IsChecked, ElementName=ItemsMenuButton, Mode=OneWay}"/>
+
+                        <RadioButton
+                            Height="40"
+                            Command=""
+                            Content="My Items"
+                            FontSize="14"
+                            Foreground="White"
+                            IsTabStop="False"
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="ItemsMenuLayer"/>
+                    </StackPanel>
 
                     <RadioButton
+                        x:Name="CreateMenuButton"
                         Height="50"
-                        Command="{Binding CreateViewCommand}"
+                        Command="{Binding CreateItemViewCommand}"
                         Content="Create"
                         FontSize="14"
                         Foreground="White"
                         IsChecked="{Binding CreateButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" />
+                        Style="{StaticResource MenuButtonTheme}" 
+                        GroupName="MainMenuLayer"/>
+                    <StackPanel
+                        x:Name="CreateSubMenu"
+                        Margin="0,0,0,0"
+                        Background="#272545"
+                        Orientation="Vertical"
+                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                        Visibility="{Binding IsChecked, ElementName=CreateMenuButton, Converter={StaticResource BoolToVis}}">
+                        <RadioButton
+                            Height="40"
+                            Command=""
+                            Content="Item"
+                            FontSize="14"
+                            Foreground="White"
+                            IsTabStop="False"
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="CreateMenuLayer"
+                            IsChecked="{Binding IsChecked, ElementName=CreateMenuButton, Mode=OneWay}"/>
+
+                        <RadioButton
+                            Height="40"
+                            Command=""
+                            Content="Shop"
+                            FontSize="14"
+                            Foreground="White"
+                            IsTabStop="False"
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="CreateMenuLayer"/>
+                    </StackPanel>
 
                     <RadioButton
                         x:Name="ShopMenuButton"
@@ -90,7 +153,8 @@
                         Foreground="White"
                         IsChecked="{Binding Path=ShopButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" />
+                        Style="{StaticResource MenuButtonTheme}"
+                        GroupName="MainMenuLayer"/>
 
                     <StackPanel
                         x:Name="ShopSubMenu"
@@ -98,7 +162,7 @@
                         Background="#272545"
                         Orientation="Vertical"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                        Visibility="{Binding SubMenuCollapsed, Converter={StaticResource BoolToVis}}">
+                        Visibility="{Binding IsChecked, ElementName=ShopMenuButton, Converter={StaticResource BoolToVis}}">
                         <RadioButton
                             Height="40"
                             Command="{Binding GeneralStoreViewCommand}"
@@ -107,7 +171,8 @@
                             Foreground="White"
                             IsChecked="{Binding GeneralButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}" />
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="ShopMenuLayer"/>
                         <RadioButton
                             Height="40"
                             Command="{Binding ArmorerViewCommand}"
@@ -116,7 +181,8 @@
                             Foreground="White"
                             IsChecked="{Binding ArmorerButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}" />
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="ShopMenuLayer"/>
                         <RadioButton
                             Height="40"
                             Command="{Binding WeaponSmithViewCommand}"
@@ -125,7 +191,8 @@
                             Foreground="White"
                             IsChecked="{Binding WeaponSmithButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}" />
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="ShopMenuLayer"/>
                         <RadioButton
                             Height="40"
                             Command="{Binding AlchemistViewCommand}"
@@ -134,7 +201,8 @@
                             Foreground="White"
                             IsChecked="{Binding AlchemistButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}" />
+                            Style="{StaticResource shopSubButtonTheme}"
+                            GroupName="ShopMenuLayer"/>
                         <RadioButton
                             Height="40"
                             Command="{Binding ArcaneSuppliesViewCommand}"
@@ -143,7 +211,8 @@
                             Foreground="White"
                             IsChecked="{Binding ArcaneSuppliesButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}" />
+                            Style="{StaticResource shopSubButtonTheme}" 
+                            GroupName="ShopMenuLayer"/>
                     </StackPanel>
 
 
@@ -160,7 +229,8 @@
                         Foreground="White"
                         IsChecked="{Binding SettingsButtonChecked}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" />
+                        Style="{StaticResource MenuButtonTheme}"
+                        GroupName="MainMenuLayer"/>
                     <RadioButton
                         Height="50"
                         VerticalAlignment="Bottom"
@@ -170,7 +240,8 @@
                         Foreground="White"
                         IsChecked="{Binding AboutButtonChecked}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" />
+                        Style="{StaticResource MenuButtonTheme}"
+                        GroupName="MainMenuLayer"/>
                 </StackPanel>
 
             </DockPanel>
