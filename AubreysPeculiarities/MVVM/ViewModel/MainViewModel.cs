@@ -12,7 +12,7 @@ namespace AubreysPeculiarities.MVVM.ViewModel
         public HomeViewModel HomeVm { get; set; }
         public ItemViewModel ItemVm { get; set; }
         public ShopsViewModel ShopsVm { get; set; }
-        public CreateViewModel CreateVm { get; set; }
+        public CreateItemViewModel CreateItemVm { get; set; }
         public SettingsViewModel SettingsVm { get; set; }
         public AboutViewModel AboutVm { get; set; }
         public GeneralStoreViewModel GeneralStoreVm { get; set; }
@@ -25,7 +25,7 @@ namespace AubreysPeculiarities.MVVM.ViewModel
         public ICommand HomeViewCommand { get; }
         public ICommand ItemViewCommand { get; }
         public ICommand ShopsViewCommand { get; }
-        public ICommand CreateViewCommand { get; }
+        public ICommand CreateItemViewCommand { get; }
         public ICommand SettingsViewCommand { get; }
         public ICommand AboutViewCommand { get; }
         public ICommand GeneralStoreViewCommand { get; }
@@ -192,7 +192,7 @@ namespace AubreysPeculiarities.MVVM.ViewModel
             HomeVm = new HomeViewModel();
             ItemVm = new ItemViewModel();
             ShopsVm = new ShopsViewModel();
-            CreateVm = new CreateViewModel();
+            CreateItemVm = new CreateItemViewModel();
             SettingsVm = new SettingsViewModel();
             AboutVm = new AboutViewModel();
             GeneralStoreVm = new GeneralStoreViewModel();
@@ -205,7 +205,7 @@ namespace AubreysPeculiarities.MVVM.ViewModel
             HomeViewCommand = new RelayCommand(SetViewHome);
             ItemViewCommand = new RelayCommand(SetViewItem);
             ShopsViewCommand = new RelayCommand(SetViewShops);
-            CreateViewCommand = new RelayCommand(SetViewCreate);
+            CreateItemViewCommand = new RelayCommand(SetViewCreate);
             SettingsViewCommand = new RelayCommand(SetViewSettings);
             AboutViewCommand = new RelayCommand(SetViewAbout);
             GeneralStoreViewCommand = new RelayCommand(SetGeneralStoreView);
@@ -304,7 +304,7 @@ namespace AubreysPeculiarities.MVVM.ViewModel
 
         private void SetViewCreate()
         {
-            CurrentView = CreateVm;
+            CurrentView = CreateItemVm;
             UnCheckAllMenuButton();
             CreateButtonChecked = true;
         }

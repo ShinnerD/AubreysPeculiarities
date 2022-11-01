@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AubreysPeculiarities.MVVM.ViewModel
 {
-    public class CreateViewModel
+    public class CreateItemViewModel
     {
     }
 }
