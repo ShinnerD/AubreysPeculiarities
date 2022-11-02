@@ -18,14 +18,13 @@
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Background="{TemplateBinding Background}">
-                            <Rectangle StrokeThickness="1" />
 
                             <TextBlock
                                 Margin="3,5,3,5"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 FontFamily="Fonts/#Poppins"
-                                Foreground="White"
+                                Foreground="{StaticResource BrightTextColor}"
                                 Text="{TemplateBinding Property=Content}"
                                 TextWrapping="WrapWithOverFlow" />
                         </Grid>
@@ -34,11 +33,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Background" Value="#353340" />
+        <Setter Property="Background" Value="{StaticResource ExitMinimizButtonColor}" />
         <Setter Property="BorderThickness" Value="0" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#22202F" />
+                <Setter Property="Background" Value="{StaticResource ExitMinimizButtonMouseOverColor}" />
             </Trigger>
         </Style.Triggers>
     </Style>

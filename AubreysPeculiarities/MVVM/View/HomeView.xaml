@@ -6,25 +6,25 @@
     xmlns:local="clr-namespace:AubreysPeculiarities.MVVM.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:AubreysPeculiarities.MVVM.ViewModel"
+    x:Name="MainHomeViewUserControl"
     d:DesignHeight="480"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <StackPanel>
-
-        <!--  Top Left Title  -->
-        <TextBlock
-            Margin="0,0,0,20"
-            HorizontalAlignment="Left"
-            FontSize="28"
-            Foreground="White"
-            Text="Home" />
+    <StackPanel x:Name="HomeViewRootStackPanel" VerticalAlignment="Center">
 
         <!--  Top Row Buttons Start  -->
-        <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+        <StackPanel
+            x:Name="TopRowItemsStackPanel"
+            Margin="0,0,0,30"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
 
             <!--  Explore Available Items  -->
-            <Border Width="400" Height="200">
+            <Border
+                x:Name="ExploreItemsButtonBorder"
+                Width="400"
+                Height="200">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                         <GradientStop Offset="0.0" Color="#5bc3ff" />
@@ -39,6 +39,7 @@
                         Rect="0,0,400,200" />
                 </Border.Clip>
                 <Button
+                    x:Name="ExploreItemsButton"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.ItemViewCommand}">
@@ -47,12 +48,12 @@
                             <TextBlock
                                 Margin="20,10,10,0"
                                 FontSize="28"
-                                Foreground="White"
+                                Foreground="{StaticResource BrightTextColor}"
                                 Text="Explore Available Items" />
                             <TextBlock
                                 Margin="20,10,10,0"
                                 FontSize="18"
-                                Foreground="White"
+                                Foreground="{StaticResource BrightTextColor}"
                                 Text="Replace the old torch today!" />
                         </StackPanel>
                         <Image
@@ -78,6 +79,7 @@
 
             <!--  Create Things!  -->
             <Border
+                x:Name="CreateThingsButtonBorder"
                 Width="200"
                 Height="200"
                 Margin="45,0,0,0"
@@ -96,6 +98,7 @@
                         Rect="0,0,200,200" />
                 </Border.Clip>
                 <Button
+                    x:Name="CreateThingsButton"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.CreateViewCommand}">
@@ -138,22 +141,18 @@
         <!--  Top Row Buttons End  -->
 
         <!--  Lower Row Start  -->
-        <StackPanel>
+        <StackPanel x:Name="BottomRowItemsStackPanel">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Margin" Value="10,0,0,0" />
                 </Style>
             </StackPanel.Resources>
 
-            <!--  Visit These Stores  -->
-            <TextBlock
-                Margin="0,0,0,10"
-                FontSize="20"
-                Foreground="White"
-                Text="Visit These Stores" />
-
             <!--  Button Row Start  -->
-            <StackPanel Margin="2,0,-2,0" Orientation="Horizontal">
+            <StackPanel
+                x:Name="BottomRowItemsHorizontalStackPanel"
+                Margin="2,0,-2,0"
+                Orientation="Horizontal">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Foreground" Value="Black" />
@@ -165,6 +164,7 @@
 
                 <!--  General Store  -->
                 <Border
+                    x:Name="GeneralStoreButtonBorder"
                     Width="150"
                     Height="150"
                     Margin="0"
@@ -187,7 +187,7 @@
                                 Width="150"
                                 Height="150"
                                 Margin="0,0,0,0">
-                                <TextBlock Text="General Store" />
+                                <TextBlock FontFamily="Poppins" FontWeight="SemiBold" Text="General Store" />
                             </StackPanel>
                             <Image
                                 Width="100"
@@ -204,6 +204,7 @@
 
                 <!--  Armorer  -->
                 <Border
+                    x:Name="ArmorerStoreButtonBorder"
                     Width="150"
                     Height="150"
                     Background="#4e99ff"
@@ -220,7 +221,7 @@
                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.ArmorerViewCommand}">
                         <Grid>
                             <StackPanel Width="150" Height="150">
-                                <TextBlock Text="Armorer" />
+                                <TextBlock FontFamily="Poppins" FontWeight="SemiBold" Text="Armorer" />
                             </StackPanel>
                             <Image
                                 Width="100"
@@ -235,6 +236,7 @@
 
                 <!--  Weapon Smith  -->
                 <Border
+                    x:Name="WeaponSmithStoreButtonBorder"
                     Width="150"
                     Height="150"
                     Background="#4eff91"
@@ -251,7 +253,7 @@
                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.WeaponSmithViewCommand}">
                         <Grid>
                             <StackPanel Width="150" Height="150">
-                                <TextBlock Text="Weapon Smith" />
+                                <TextBlock FontFamily="Poppins" FontWeight="SemiBold" Text="Weapon Smith" />
                             </StackPanel>
                             <Image
                                 Width="100"
@@ -266,6 +268,7 @@
 
                 <!--  Alchemist  -->
                 <Border
+                    x:Name="AlchemistStoreButtonBorder"
                     Width="150"
                     Height="150"
                     Background="#ecff4e"
@@ -284,7 +287,7 @@
                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.AlchemistViewCommand}">
                         <Grid>
                             <StackPanel Width="150" Height="150">
-                                <TextBlock Text="Alchemist" />
+                                <TextBlock FontFamily="Poppins" FontWeight="SemiBold" Text="Alchemist" />
                             </StackPanel>
                             <Image
                                 Width="100"
@@ -299,6 +302,7 @@
 
                 <!--  Arcane Supplies  -->
                 <Border
+                    x:Name="ArcaneSuppliesStoreButtonBorder"
                     Width="150"
                     Height="150"
                     Background="#FFFF9E4E"
@@ -315,7 +319,7 @@
                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.ArcaneSuppliesViewCommand}">
                         <Grid>
                             <StackPanel Width="150" Height="150">
-                                <TextBlock Text="Arcane Supplies" />
+                                <TextBlock FontFamily="Poppins" FontWeight="SemiBold" Text="Arcane Supplies" />
                             </StackPanel>
                             <Image
                                 Width="100"

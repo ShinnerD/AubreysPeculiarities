@@ -13,19 +13,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="Button.Static.Background" Color="#353340" />
-    <SolidColorBrush x:Key="Button.Static.Border" Color="#22202F" />
-    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#22202F" />
-    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#22202F" />
-    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#22202F" />
-    <SolidColorBrush x:Key="Button.Pressed.Border" Color="#22202F" />
-    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#22202F" />
-    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#22202F" />
-    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#22202F" />
+
+
     <Style x:Key="BaseButtonStyle" TargetType="{x:Type ButtonBase}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
-        <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
-        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
+        <Setter Property="Background" Value="{StaticResource ScrollBarButtonStaticBackground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ScrollBarButtonStaticBorder}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -54,17 +47,17 @@
                             <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource Button.MouseOver.Background}" />
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Border}" />
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource ScrollBarButtonMouseOverBackground}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ScrollBarButtonMouseOverBorder}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource Button.Pressed.Background}" />
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.Pressed.Border}" />
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource ScrollBarButtonPressedBackground}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ScrollBarButtonPressedBorder}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource Button.Disabled.Background}" />
-                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.Disabled.Border}" />
-                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource Button.Disabled.Foreground}" />
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource ScrollBarButtonDisabledBackground}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ScrollBarButtonDisabledBorder}" />
+                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource ScrollBarButtonDisabledForeground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

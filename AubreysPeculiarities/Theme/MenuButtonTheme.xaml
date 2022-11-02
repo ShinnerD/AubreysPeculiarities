@@ -29,10 +29,10 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#22202F" />
+                <Setter Property="Background" Value="{StaticResource MainMenuSelectedButton}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#22202F" />
+                <Setter Property="Background" Value="{StaticResource MainMenuMouseOverButton}" />
             </Trigger>
         </Style.Triggers>
     </Style>

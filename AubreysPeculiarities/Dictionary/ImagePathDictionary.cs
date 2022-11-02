@@ -79,34 +79,34 @@ namespace AubreysPeculiarities.Dictionary
                 { "RAW", @"C:\Users\denni\OneDrive\Datamatiker Studie\Code\MVVMToolkit\AubreysPeculiarities\Images\archery-target.png" }
             };
 
-            ColorValue = new Dictionary<string, Color>
-            {
-                //Colors Ending in 991 havent been changed yet
-                { "2H", (Color)ColorConverter.ConvertFromString("#FF653032") },
-                { "A", (Color)ColorConverter.ConvertFromString("#FF283C20") },
-                { "AF", (Color)ColorConverter.ConvertFromString("#FF283C20") },
-                { "BF", (Color)ColorConverter.ConvertFromString("#FFDFD991") },
-                { "F", (Color)ColorConverter.ConvertFromString("#FF262D38") },
-                { "H", (Color)ColorConverter.ConvertFromString("#FF100524") },
-                { "L", (Color)ColorConverter.ConvertFromString("#FF1B2405") },
-                { "LD", (Color)ColorConverter.ConvertFromString("#FF382632") },
-                { "R", (Color)ColorConverter.ConvertFromString("#FF060524") },
-                { "RLD", (Color)ColorConverter.ConvertFromString("#FF4D908E") },
-                { "S", (Color)ColorConverter.ConvertFromString("#FF382632") },
-                { "T", (Color)ColorConverter.ConvertFromString("#FF052409") },
-                { "V", (Color)ColorConverter.ConvertFromString("#FF514D18") },
-                { "RA", (Color)ColorConverter.ConvertFromString("#FF051923") },
-                { "ME", (Color)ColorConverter.ConvertFromString("#FF252422") },
-                { "MAR", (Color)ColorConverter.ConvertFromString("#FFD25F3D") },
-                { "SIM", (Color)ColorConverter.ConvertFromString("#FF5C462F") },
-                { "FOC", (Color)ColorConverter.ConvertFromString("#FF442E5B") },
-                { "FUT", (Color)ColorConverter.ConvertFromString("#FFDFD991") },
-                { "CON", (Color)ColorConverter.ConvertFromString("#FF2E5B58") },
-                { "WAR", (Color)ColorConverter.ConvertFromString("#FF2E3F5B") },
-                { "TG", (Color)ColorConverter.ConvertFromString("#FF03071E") },
-                { "BAG", (Color)ColorConverter.ConvertFromString("#FF051923") },
-                { "UTI", (Color)ColorConverter.ConvertFromString("#FF0077B6") }
-            };
+            //ColorValue = new Dictionary<string, Color>
+            //{
+            //    //Colors Ending in 991 havent been changed yet
+            //    { "2H", (Color)ColorConverter.ConvertFromString("#FF653032") },
+            //    { "A", (Color)ColorConverter.ConvertFromString("#FF283C20") },
+            //    { "AF", (Color)ColorConverter.ConvertFromString("#FF283C20") },
+            //    { "BF", (Color)ColorConverter.ConvertFromString("#FFDFD991") },
+            //    { "F", (Color)ColorConverter.ConvertFromString("#FF262D38") },
+            //    { "H", (Color)ColorConverter.ConvertFromString("#FF100524") },
+            //    { "L", (Color)ColorConverter.ConvertFromString("#FF1B2405") },
+            //    { "LD", (Color)ColorConverter.ConvertFromString("#FF382632") },
+            //    { "R", (Color)ColorConverter.ConvertFromString("#FF060525") },
+            //    { "RLD", (Color)ColorConverter.ConvertFromString("#FF4D908E") },
+            //    { "S", (Color)ColorConverter.ConvertFromString("#FF382632") },
+            //    { "T", (Color)ColorConverter.ConvertFromString("#FF052409") },
+            //    { "V", (Color)ColorConverter.ConvertFromString("#FF514D18") },
+            //    { "RA", (Color)ColorConverter.ConvertFromString("#FF051923") },
+            //    { "ME", (Color)ColorConverter.ConvertFromString("#FF252422") },
+            //    { "MAR", (Color)ColorConverter.ConvertFromString("#FFD25F3D") },
+            //    { "SIM", (Color)ColorConverter.ConvertFromString("#FF5C462F") },
+            //    { "FOC", (Color)ColorConverter.ConvertFromString("#FF442E5B") },
+            //    { "FUT", (Color)ColorConverter.ConvertFromString("#FFDFD991") },
+            //    { "CON", (Color)ColorConverter.ConvertFromString("#FF2E5B58") },
+            //    { "WAR", (Color)ColorConverter.ConvertFromString("#FF2E3F5B") },
+            //    { "TG", (Color)ColorConverter.ConvertFromString("#FF03071E") },
+            //    { "BAG", (Color)ColorConverter.ConvertFromString("#FF051923") },
+            //    { "UTI", (Color)ColorConverter.ConvertFromString("#FF0077B6") }
+            //};
         }
 
     }

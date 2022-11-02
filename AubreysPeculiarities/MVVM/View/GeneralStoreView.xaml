@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:AubreysPeculiarities.MVVM.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:AubreysPeculiarities.MVVM.ViewModel"
-    x:Name="userControl"
+    x:Name="GeneralStoreUserControl"
     d:DesignHeight="505"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -18,35 +18,44 @@
     </UserControl.DataContext>
 
     <Grid
-        Width="{Binding ActualWidth, ElementName=userControl, Mode=OneWay}"
-        Height="{Binding ActualHeight, ElementName=userControl, Mode=OneWay}"
-        MaxHeight="{Binding ActualHeight, ElementName=userControl, Mode=OneWay}">
+        x:Name="GeneralStoreRootGrid"
+        Width="{Binding ActualWidth, ElementName=GeneralStoreUserControl, Mode=OneWay}"
+        Height="{Binding ActualHeight, ElementName=GeneralStoreUserControl, Mode=OneWay}"
+        MaxHeight="{Binding ActualHeight, ElementName=GeneralStoreUserControl, Mode=OneWay}">
 
-        <StackPanel Orientation="Vertical">
+        <StackPanel x:Name="GeneralStoreRootStackPanel" Orientation="Vertical">
             <!--  Start Of Shop Info  -->
             <Border
+                x:Name="ShopInfoBorder"
                 Height="80"
                 Margin="0,0,0,5"
-                Background="#FF1F1F1F"
+                Background="{StaticResource ShopInfoBackground}"
                 CornerRadius="5">
-                <Grid>
+                <Grid x:Name="ShopInfoGrid">
                     <TextBlock
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         FontFamily="Fonts/#Poppins"
                         FontSize="30"
-                        Foreground="White"
+                        Foreground="{StaticResource BrightTextColor}"
                         Text="{Binding GeneralStore.Name, UpdateSourceTrigger=PropertyChanged}" />
                 </Grid>
             </Border>
 
             <!--  Start of Column Header Buttons  -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel x:Name="ColumnHeaderStackPanel" Orientation="Horizontal">
                 <Border
+                    x:Name="NameColumnHeaderBorder"
                     Width="250"
                     Height="30"
-                    Background="#FF252422"
+                    Background="{StaticResource ListViewHeaderBackgroundColor}"
                     CornerRadius="5">
+                    <Border.Clip>
+                        <RectangleGeometry
+                            RadiusX="5"
+                            RadiusY="5"
+                            Rect="0,0,250,30" />
+                    </Border.Clip>
                     <Button
                         x:Name="NameColumnHeaderButton"
                         Background="Transparent"
@@ -63,14 +72,14 @@
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Style.Setters>
-                                    <Setter Property="Foreground" Value="DarkSlateGray" />
+                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 </Style.Setters>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="name">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="nameDescending">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -78,12 +87,20 @@
                     </Button>
                 </Border>
                 <Border
+                    x:Name="TypeColumnHeaderBorder"
                     Width="200"
                     Height="30"
                     Margin="5,0,0,0"
-                    Background="#FF252422"
+                    Background="{StaticResource ListViewHeaderBackgroundColor}"
                     CornerRadius="5">
+                    <Border.Clip>
+                        <RectangleGeometry
+                            RadiusX="5"
+                            RadiusY="5"
+                            Rect="0,0,200,30" />
+                    </Border.Clip>
                     <Button
+                        x:Name="TypeColumnHeaderButton"
                         Background="Transparent"
                         BorderBrush="Transparent"
                         Command="{Binding OrderByCommand}"
@@ -95,14 +112,14 @@
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Style.Setters>
-                                    <Setter Property="Foreground" Value="DarkSlateGray" />
+                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 </Style.Setters>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="type">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="typeDescending">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -110,12 +127,20 @@
                     </Button>
                 </Border>
                 <Border
+                    x:Name="WeightColumnHeaderBorder"
                     Width="180"
                     Height="30"
                     Margin="5,0,0,0"
-                    Background="#FF252422"
+                    Background="{StaticResource ListViewHeaderBackgroundColor}"
                     CornerRadius="5">
+                    <Border.Clip>
+                        <RectangleGeometry
+                            RadiusX="5"
+                            RadiusY="5"
+                            Rect="0,0,180,30" />
+                    </Border.Clip>
                     <Button
+                        x:Name="WeightColumnHeaderButton"
                         Background="Transparent"
                         BorderBrush="Transparent"
                         Command="{Binding OrderByCommand}"
@@ -127,14 +152,14 @@
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Style.Setters>
-                                    <Setter Property="Foreground" Value="DarkSlateGray" />
+                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 </Style.Setters>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="weight">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="weightDescending">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -142,12 +167,22 @@
                     </Button>
                 </Border>
                 <Border
-                    Width="120"
+                    x:Name="CostColumnHeaderBorder"
+                    Width="160"
                     Height="30"
                     Margin="5,0,0,0"
-                    Background="#FF252422"
+                    Background="{StaticResource ListViewHeaderBackgroundColor}"
                     CornerRadius="5">
+                    <Border.Clip>
+                        <RectangleGeometry
+                            RadiusX="5"
+                            RadiusY="5"
+                            Rect="0,0,160,30" />
+                    </Border.Clip>
                     <Button
+                        x:Name="CostColumnHeaderButton"
+                        Padding="45,0,0,0"
+                        HorizontalContentAlignment="Left"
                         Background="Transparent"
                         BorderBrush="Transparent"
                         Command="{Binding OrderByCommand}"
@@ -159,14 +194,14 @@
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Style.Setters>
-                                    <Setter Property="Foreground" Value="DarkSlateGray" />
+                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 </Style.Setters>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="cost">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="costDescending">
-                                        <Setter Property="Foreground" Value="DarkSlateBlue" />
+                                        <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -178,13 +213,13 @@
             <!--  Item ListView Start  -->
             <ListView
                 x:Name="ItemListView"
-                Width="{Binding ActualWidth, ElementName=userControl, Mode=OneWay}"
+                Width="{Binding ActualWidth, ElementName=GeneralStoreUserControl, Mode=OneWay}"
                 Height="220"
                 AlternationCount="2"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 FontFamily="Poppins"
-                Foreground="White"
+                Foreground="{StaticResource BrightTextColor}"
                 IsTabStop="True"
                 ItemContainerStyle="{DynamicResource ListViewItemTheme}"
                 ItemsSource="{Binding FilteredItemList, UpdateSourceTrigger=PropertyChanged}"
@@ -197,7 +232,7 @@
                 Style="{DynamicResource myItemListViewStyle}">
                 <ListView.View>
                     <GridView x:Name="ItemGridView" AllowsColumnReorder="True">
-                        <GridViewColumn Header="Name" HeaderContainerStyle="{StaticResource ItemListHeaderThemeBlue}">
+                        <GridViewColumn Header="Name">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock
@@ -207,7 +242,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Type" HeaderContainerStyle="{StaticResource ItemListHeaderThemeGreen}">
+                        <GridViewColumn Header="Type">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock
@@ -221,7 +256,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Weight" HeaderContainerStyle="{StaticResource ItemListHeaderThemeOrange}">
+                        <GridViewColumn Header="Weight">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -242,7 +277,7 @@
                                             HorizontalAlignment="Left"
                                             FontFamily="Fonts/#Poppins"
                                             FontSize="14"
-                                            Foreground="DarkGray"
+                                            Foreground="{StaticResource ListViewDarkTextColor}"
                                             Text="{Binding LbString}"
                                             TextAlignment="Center" />
                                     </Grid>
@@ -250,7 +285,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Cost" HeaderContainerStyle="{StaticResource ItemListHeaderThemeYellow}">
+                        <GridViewColumn Header="Cost">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -279,14 +314,18 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
             <!--  Lower Section Start  -->
             <Border
-                x:Name="SelectedItemInfoBox"
-                MaxHeight="200"
-                Background="#FF3E3E3E"
+                x:Name="SelectedItemInfoBoxBorder"
+                MaxHeight="235"
+                Background="{StaticResource ItemInfoPanelBackgroundColor}"
                 CornerRadius="10"
                 Visibility="{Binding HasItems, Converter={StaticResource BoolToVis}, ElementName=ItemListView, Mode=OneWay}">
-                <Grid Margin="5,5,5,5" VerticalAlignment="Top">
+                <Grid
+                    x:Name="SelectedItemInfoGrid"
+                    Margin="5,5,5,5"
+                    VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -301,6 +340,7 @@
 
                     <!--  Item Title Image and Name Start  -->
                     <StackPanel
+                        x:Name="SelectedItemTitleStackPanel"
                         Grid.Row="0"
                         Grid.Column="0"
                         Orientation="Horizontal">
@@ -316,13 +356,14 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="18"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.Name, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
                     </StackPanel>
                     <!--  Item Type Image and Type Text Start  -->
                     <StackPanel
+                        x:Name="SelectedItemTypeStackPanel"
                         Grid.Row="1"
                         Grid.Column="0"
                         Orientation="Horizontal">
@@ -340,13 +381,14 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.Type.Name, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
                     </StackPanel>
                     <!--  Coin value and Weight Start  -->
                     <StackPanel
+                        x:Name="SelectedItemValueWeightStackPanel"
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalAlignment="Left"
@@ -363,7 +405,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="12"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.ValueAbsolute, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
@@ -378,13 +420,14 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="12"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.Weight, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
                     </StackPanel>
                     <!--  Item Source Book and Page Start  -->
                     <StackPanel
+                        x:Name="SelectedItemSourceStackPanel"
                         Grid.Row="0"
                         Grid.Column="2"
                         HorizontalAlignment="Right"
@@ -402,7 +445,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="12"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.Source, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
@@ -412,7 +455,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="12"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="p."
                             TextAlignment="Left"
                             TextWrapping="Wrap"
@@ -424,13 +467,14 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="12"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.Page, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
                     </StackPanel>
                     <!--  Item Description Start  -->
                     <ScrollViewer
+                        x:Name="SelectedItemDescriptionScrollViewer"
                         Grid.Row="1"
                         Grid.RowSpan="3"
                         Grid.Column="1"
@@ -440,27 +484,31 @@
                         Template="{DynamicResource myItemScrollViewer}"
                         VerticalScrollBarVisibility="Auto">
                         <Border
+                            x:Name="SelectedItemDescriptionBorder"
                             Padding="5"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Background="#1A1824"
+                            Background="{StaticResource ItemDescriptionBackgroundColor}"
                             CornerRadius="5">
                             <StackPanel
+                                x:Name="SelectedItemEntriesStackPanel"
                                 Grid.Row="1"
                                 Grid.RowSpan="2"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
                                 Orientation="Vertical">
                                 <TextBlock
+                                    x:Name="SelectedItemEntries1Text"
                                     FontFamily="Fonts/#Poppins"
                                     FontSize="13"
-                                    Foreground="White"
+                                    Foreground="{StaticResource BrightTextColor}"
                                     Text="{Binding SelectedItem.Entries1, ElementName=ItemListView}"
                                     TextWrapping="Wrap" />
                                 <TextBlock
+                                    x:Name="SelectedItemEntries2Text"
                                     FontFamily="Fonts/#Poppins"
                                     FontSize="13"
-                                    Foreground="White"
+                                    Foreground="{StaticResource BrightTextColor}"
                                     Text="{Binding SelectedItem.Entries2, ElementName=ItemListView}"
                                     TextWrapping="Wrap"
                                     Visibility="{Binding SelectedItem.HasEntries2, ElementName=ItemListView, Converter={StaticResource BoolToVis}}" />
@@ -469,6 +517,7 @@
                     </ScrollViewer>
                     <!--  Item Proficiencies Listbox + Tooltip Start  -->
                     <ListBox
+                        x:Name="SelectedItemProficienciesListBox"
                         Grid.Row="2"
                         Grid.Column="0"
                         VerticalContentAlignment="Top"
@@ -500,7 +549,7 @@
                                             VerticalAlignment="Center"
                                             FontFamily="Fonts/#Poppins"
                                             FontSize="14"
-                                            Foreground="White"
+                                            Foreground="{StaticResource BrightTextColor}"
                                             Text="{Binding Name}"
                                             ToolTipService.InitialShowDelay="0"
                                             ToolTipService.ShowDuration="60000">
@@ -512,8 +561,8 @@
                                                     x:Name="PropertyToolTip"
                                                     Background="Transparent"
                                                     BorderBrush="Transparent"
-                                                    Foreground="White">
-                                                    <Border Background="#22202F" CornerRadius="5">
+                                                    Foreground="{StaticResource BrightTextColor}">
+                                                    <Border Background="Transparent" CornerRadius="5">
                                                         <StackPanel>
                                                             <Border x:Name="tooltipBd" CornerRadius="5">
                                                                 <StackPanel Orientation="Horizontal">
@@ -527,10 +576,10 @@
                                                                         Content="{Binding Name}"
                                                                         FontFamily="Fonts/#Poppins"
                                                                         FontSize="14"
-                                                                        Foreground="White" />
+                                                                        Foreground="{StaticResource BrightTextColor}" />
                                                                 </StackPanel>
                                                             </Border>
-                                                            <Border Background="#FF3E3E3E" CornerRadius="5">
+                                                            <Border Background="{StaticResource ToolTipBackgroundColor}" CornerRadius="5">
                                                                 <Grid>
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition />
@@ -571,7 +620,7 @@
                                                                             HorizontalAlignment="Right"
                                                                             VerticalAlignment="Center"
                                                                             FontSize="12"
-                                                                            Foreground="Gray"
+                                                                            Foreground="{StaticResource ToolTipDarkTextColor}"
                                                                             Text="{Binding Source}"
                                                                             TextAlignment="Left"
                                                                             TextWrapping="Wrap" />
@@ -580,7 +629,7 @@
                                                                             HorizontalAlignment="Right"
                                                                             VerticalAlignment="Center"
                                                                             FontSize="12"
-                                                                            Foreground="Gray"
+                                                                            Foreground="{StaticResource ToolTipDarkTextColor}"
                                                                             Text="p."
                                                                             TextAlignment="Left"
                                                                             TextWrapping="Wrap" />
@@ -589,7 +638,7 @@
                                                                             HorizontalAlignment="Right"
                                                                             VerticalAlignment="Center"
                                                                             FontSize="12"
-                                                                            Foreground="Gray"
+                                                                            Foreground="{StaticResource ToolTipDarkTextColor}"
                                                                             Text="{Binding Page}"
                                                                             TextAlignment="Left"
                                                                             TextWrapping="Wrap" />
@@ -615,96 +664,96 @@
                                 <!--  Start of DataTemplate Triggers for Background on different properties  -->
                                 <DataTemplate.Triggers>
                                     <DataTrigger Binding="{Binding Name}" Value="Two-Handed">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF653032" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF653032" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource Two-HandedColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource Two-HandedColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Ammunition">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF283C20" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF283C20" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource AmmunitionColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource AmmunitionColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Burst Fire">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FFDFD991" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FFDFD991" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource BurstFireColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource BurstFireColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Finesse">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF262D38" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF262D38" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource FinesseColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource FinesseColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Heavy">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF100524" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF100524" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource HeavyColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource HeavyColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Light">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF1B2405" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF1B2405" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource LightColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource LightColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Loading">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF382632" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF382632" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource LoadingColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource LoadingColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Reach">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF060524" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF060524" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource ReachColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource ReachColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Reload">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF4D908E" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF4D908E" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource ReloadColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource ReloadColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Special">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF382632" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF382632" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource SpecialColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource SpecialColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Thrown">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF052409" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF052409" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource ThrownColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource ThrownColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Versatile">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF514D18" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF514D18" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource VersatileColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource VersatileColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Range">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF051923" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF051923" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource RangeColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource RangeColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Melee">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF252422" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF252422" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource MeleeColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource MeleeColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Martial">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FFD25F3D" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FFD25F3D" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource MartialColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource MartialColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Simple">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF5C462F" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF5C462F" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource SimpleColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource SimpleColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Focus">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF442E5B" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF442E5B" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource FocusColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource FocusColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Futuristic">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FFDFD991" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FFDFD991" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource FuturisticColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource FuturisticColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Consumable">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF2E5B58" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF2E5B58" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource ConsumableColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource ConsumableColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Warding">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF2E3F5B" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF2E3F5B" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource WardingColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource WardingColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Trade Good">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF03071E" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF03071E" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource TradeGoodColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource TradeGoodColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Container">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF051923" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF051923" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource ContainerColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource ContainerColor}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Name}" Value="Utility">
-                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="#FF0077B6" />
-                                        <Setter TargetName="tooltipBd" Property="Background" Value="#FF0077B6" />
+                                        <Setter TargetName="ItemPropertyBorderBackground" Property="Background" Value="{StaticResource UtilityColor}" />
+                                        <Setter TargetName="tooltipBd" Property="Background" Value="{StaticResource UtilityColor}" />
                                     </DataTrigger>
                                 </DataTemplate.Triggers>
                             </DataTemplate>
@@ -712,6 +761,7 @@
                     </ListBox>
                     <!--  Melee Damage and Damage Image and Versatility and Range Start  -->
                     <StackPanel
+                        x:Name="SelectedItemDamageVersatilityRangeStackPanel"
                         Grid.Row="3"
                         Grid.Column="0"
                         Orientation="Horizontal"
@@ -730,7 +780,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.Dmg1, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
@@ -742,7 +792,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.DmgType, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
@@ -754,7 +804,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             TextAlignment="Left"
                             TextWrapping="Wrap"
                             Visibility="{Binding SelectedItem.HasVersatilityVisibility, ElementName=ItemListView, Converter={StaticResource BoolToVis}}">
@@ -772,7 +822,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             TextAlignment="Left"
                             TextWrapping="Wrap"
                             Visibility="{Binding SelectedItem.HasRangeVisibility, ElementName=ItemListView, Converter={StaticResource BoolToVis}}">
@@ -785,6 +835,7 @@
                     </StackPanel>
                     <!--  Armor Image text and Values Start  -->
                     <StackPanel
+                        x:Name="SelectedItemAmorStackPanel"
                         Grid.Row="3"
                         Grid.Column="0"
                         Orientation="Horizontal"
@@ -803,7 +854,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.ArmorAC, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
@@ -815,7 +866,7 @@
                             VerticalAlignment="Center"
                             FontFamily="Poppins"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
                             Text="{Binding SelectedItem.ArmorTypeString, ElementName=ItemListView}"
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
