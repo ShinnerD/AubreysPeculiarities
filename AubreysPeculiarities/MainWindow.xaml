@@ -21,35 +21,43 @@
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
-    <Border Background="#272537" CornerRadius="5">
-        <Grid>
+    <Border
+        x:Name="MainRootBorder"
+        Background="{StaticResource MainWindowBackgroundColor}"
+        CornerRadius="5">
+        <Grid x:Name="MainGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="75" />
+                <RowDefinition Height="60" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
             <!--  Main Window Top Left Title  -->
             <TextBlock
-                Margin="20,0,0,0"
+                x:Name="MainTitleText"
+                Margin="20,10,0,0"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 FontFamily="/Fonts/#Poppins"
                 FontSize="22"
-                Foreground="White"
+                Foreground="{StaticResource BrightTextColor}"
                 Text="Aubrey's" />
 
             <!--  Start of Main Menu  -->
             <DockPanel
+                x:Name="MainMenuDockPanel"
                 Grid.Row="1"
                 Grid.Column="0"
                 LastChildFill="False">
 
                 <!--  Top Menu Items  -->
-                <StackPanel Grid.Row="1" DockPanel.Dock="Top">
+                <StackPanel
+                    x:Name="TopMenuItemsStackPanel"
+                    Grid.Row="1"
+                    DockPanel.Dock="Top">
 
                     <RadioButton
                         x:Name="HomeMenuButton"
@@ -57,11 +65,11 @@
                         Command="{Binding HomeViewCommand}"
                         Content="Home"
                         FontSize="14"
-                        Foreground="White"
+                        Foreground="{StaticResource BrightTextColor}"
+                        GroupName="MainMenuLayer"
                         IsChecked="{Binding HomeButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}"
-                        GroupName="MainMenuLayer"/>
+                        Style="{StaticResource MenuButtonTheme}" />
 
                     <RadioButton
                         x:Name="ItemsMenuButton"
@@ -69,39 +77,41 @@
                         Command="{Binding ItemViewCommand}"
                         Content="Items"
                         FontSize="14"
-                        Foreground="White"
+                        Foreground="{StaticResource BrightTextColor}"
+                        GroupName="MainMenuLayer"
                         IsChecked="{Binding ItemButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" 
-                        GroupName="MainMenuLayer"/>
+                        Style="{StaticResource MenuButtonTheme}" />
 
                     <StackPanel
                         x:Name="ItemsSubMenu"
                         Margin="0,0,0,0"
-                        Background="#272545"
+                        Background="{StaticResource SubMenuBackgroundColor}"
                         Orientation="Vertical"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
                         Visibility="{Binding IsChecked, ElementName=ItemsMenuButton, Converter={StaticResource BoolToVis}}">
                         <RadioButton
+                            x:Name="StandardItemsButton"
                             Height="40"
                             Command="{Binding ItemViewCommand}"
                             Content="Standard Items"
                             FontSize="14"
-                            Foreground="White"
-                            IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
+                            Foreground="{StaticResource BrightTextColor}"
                             GroupName="ItemsMenuLayer"
-                            IsChecked="{Binding IsChecked, ElementName=ItemsMenuButton, Mode=OneWay}"/>
+                            IsChecked="{Binding IsChecked, ElementName=ItemsMenuButton, Mode=OneWay}"
+                            IsTabStop="False"
+                            Style="{StaticResource shopSubButtonTheme}" />
 
                         <RadioButton
+                            x:Name="CustomItemsButton"
                             Height="40"
                             Command=""
                             Content="My Items"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
+                            GroupName="ItemsMenuLayer"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
-                            GroupName="ItemsMenuLayer"/>
+                            Style="{StaticResource shopSubButtonTheme}" />
                     </StackPanel>
 
                     <RadioButton
@@ -110,15 +120,15 @@
                         Command="{Binding CreateItemViewCommand}"
                         Content="Create"
                         FontSize="14"
-                        Foreground="White"
+                        Foreground="{StaticResource BrightTextColor}"
+                        GroupName="MainMenuLayer"
                         IsChecked="{Binding CreateButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}" 
-                        GroupName="MainMenuLayer"/>
+                        Style="{StaticResource MenuButtonTheme}" />
                     <StackPanel
                         x:Name="CreateSubMenu"
                         Margin="0,0,0,0"
-                        Background="#272545"
+                        Background="{StaticResource SubMenuBackgroundColor}"
                         Orientation="Vertical"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
                         Visibility="{Binding IsChecked, ElementName=CreateMenuButton, Converter={StaticResource BoolToVis}}">
@@ -127,21 +137,21 @@
                             Command=""
                             Content="Item"
                             FontSize="14"
-                            Foreground="White"
-                            IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
+                            Foreground="{StaticResource BrightTextColor}"
                             GroupName="CreateMenuLayer"
-                            IsChecked="{Binding IsChecked, ElementName=CreateMenuButton, Mode=OneWay}"/>
+                            IsChecked="{Binding IsChecked, ElementName=CreateMenuButton, Mode=OneWay}"
+                            IsTabStop="False"
+                            Style="{StaticResource shopSubButtonTheme}" />
 
                         <RadioButton
                             Height="40"
                             Command=""
                             Content="Shop"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
+                            GroupName="CreateMenuLayer"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
-                            GroupName="CreateMenuLayer"/>
+                            Style="{StaticResource shopSubButtonTheme}" />
                     </StackPanel>
 
                     <RadioButton
@@ -150,16 +160,16 @@
                         Command="{Binding ShopsViewCommand}"
                         Content="Shops"
                         FontSize="14"
-                        Foreground="White"
+                        Foreground="{StaticResource BrightTextColor}"
+                        GroupName="MainMenuLayer"
                         IsChecked="{Binding Path=ShopButtonChecked, Mode=TwoWay}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}"
-                        GroupName="MainMenuLayer"/>
+                        Style="{StaticResource MenuButtonTheme}" />
 
                     <StackPanel
                         x:Name="ShopSubMenu"
                         Margin="0,0,0,0"
-                        Background="#272545"
+                        Background="{StaticResource SubMenuBackgroundColor}"
                         Orientation="Vertical"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
                         Visibility="{Binding IsChecked, ElementName=ShopMenuButton, Converter={StaticResource BoolToVis}}">
@@ -168,80 +178,82 @@
                             Command="{Binding GeneralStoreViewCommand}"
                             Content="General Store"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
+                            GroupName="ShopMenuLayer"
                             IsChecked="{Binding GeneralButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
-                            GroupName="ShopMenuLayer"/>
+                            Style="{StaticResource shopSubButtonTheme}" />
                         <RadioButton
                             Height="40"
                             Command="{Binding ArmorerViewCommand}"
                             Content="Armorer"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
+                            GroupName="ShopMenuLayer"
                             IsChecked="{Binding ArmorerButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
-                            GroupName="ShopMenuLayer"/>
+                            Style="{StaticResource shopSubButtonTheme}" />
                         <RadioButton
                             Height="40"
                             Command="{Binding WeaponSmithViewCommand}"
                             Content="Weapon Smith"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
+                            GroupName="ShopMenuLayer"
                             IsChecked="{Binding WeaponSmithButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
-                            GroupName="ShopMenuLayer"/>
+                            Style="{StaticResource shopSubButtonTheme}" />
                         <RadioButton
                             Height="40"
                             Command="{Binding AlchemistViewCommand}"
                             Content="Alchemist"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
+                            GroupName="ShopMenuLayer"
                             IsChecked="{Binding AlchemistButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}"
-                            GroupName="ShopMenuLayer"/>
+                            Style="{StaticResource shopSubButtonTheme}" />
                         <RadioButton
                             Height="40"
                             Command="{Binding ArcaneSuppliesViewCommand}"
                             Content="Arcane Supplies"
                             FontSize="14"
-                            Foreground="White"
+                            Foreground="{StaticResource BrightTextColor}"
+                            GroupName="ShopMenuLayer"
                             IsChecked="{Binding ArcaneSuppliesButtonChecked}"
                             IsTabStop="False"
-                            Style="{StaticResource shopSubButtonTheme}" 
-                            GroupName="ShopMenuLayer"/>
+                            Style="{StaticResource shopSubButtonTheme}" />
                     </StackPanel>
 
 
                 </StackPanel>
 
                 <!--  Lower Menu Items  -->
-                <StackPanel DockPanel.Dock="Bottom">
+                <StackPanel x:Name="BottomMenuItemsStackPanel" DockPanel.Dock="Bottom">
                     <RadioButton
+                        x:Name="SettingsMenuButton"
                         Height="50"
                         VerticalAlignment="Bottom"
                         Command="{Binding SettingsViewCommand}"
                         Content="Settings"
                         FontSize="14"
-                        Foreground="White"
+                        Foreground="{StaticResource BrightTextColor}"
+                        GroupName="MainMenuLayer"
                         IsChecked="{Binding SettingsButtonChecked}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}"
-                        GroupName="MainMenuLayer"/>
+                        Style="{StaticResource MenuButtonTheme}" />
                     <RadioButton
+                        x:Name="AboutMenuButton"
                         Height="50"
                         VerticalAlignment="Bottom"
                         Command="{Binding AboutViewCommand}"
                         Content="About"
                         FontSize="14"
-                        Foreground="White"
+                        Foreground="{StaticResource BrightTextColor}"
+                        GroupName="MainMenuLayer"
                         IsChecked="{Binding AboutButtonChecked}"
                         IsTabStop="False"
-                        Style="{StaticResource MenuButtonTheme}"
-                        GroupName="MainMenuLayer"/>
+                        Style="{StaticResource MenuButtonTheme}" />
                 </StackPanel>
 
             </DockPanel>
@@ -249,16 +261,17 @@
 
             <!--  Search Bar  -->
             <Border
+                x:Name="SearchBarBorder"
                 Grid.Row="0"
                 Grid.Column="1"
                 Width="400"
                 Height="40"
-                Margin="10,0,0,0"
+                Margin="10,10,0,0"
                 HorizontalAlignment="Left"
-                Background="#353340"
+                VerticalAlignment="Top"
+                Background="{StaticResource InputFieldBackgroundColor}"
                 CornerRadius="10">
-                <Grid>
-                    <Rectangle StrokeThickness="1" />
+                <Grid x:Name="SearchBarGrid">
                     <TextBox
                         x:Name="SearchBox"
                         Margin="1"
@@ -266,16 +279,17 @@
                         VerticalAlignment="Center"
                         Background="Transparent"
                         BorderThickness="0"
-                        Foreground="#CFCFCF"
+                        Foreground="{StaticResource InputFieldTextColor}"
                         Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                     <TextBlock
+                        x:Name="SearchBoxBackgroundText"
                         Grid.Column="1"
                         Margin="10,0,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontSize="11"
-                        Foreground="DarkGray"
+                        Foreground="{StaticResource InputFieldBackgroundTextColor}"
                         IsHitTestVisible="False"
                         Text="Search...">
                         <TextBlock.Style>
@@ -295,6 +309,7 @@
 
             <!--  Exit and Minimize Button Start  -->
             <StackPanel
+                x:Name="WindowControlButtonsStackPanel"
                 Grid.Column="1"
                 Margin="0,0,10,0"
                 HorizontalAlignment="Right"
@@ -308,8 +323,9 @@
                     x:Name="minimizeAppButton"
                     Width="40"
                     Height="40"
-                    Margin="0,0,10,0"
+                    Margin="0,10,10,0"
                     HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
                     Click="minimizeAppButton_Click"
                     Content="__"
                     FontSize="35"
@@ -319,7 +335,9 @@
                     x:Name="exitAppButton"
                     Width="40"
                     Height="40"
+                    Margin="0,10,0,0"
                     HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
                     Click="exitAppButton_Click"
                     Content="X"
                     FontSize="35"
@@ -333,7 +351,7 @@
                 x:Name="ContentWindow"
                 Grid.Row="1"
                 Grid.Column="1"
-                Margin="10"
+                Margin="5"
                 Content="{Binding CurrentView}"
                 IsTabStop="False" />
 

@@ -10,8 +10,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/ColorTheme.xaml" />
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
-                <ResourceDictionary Source="Theme/TextBoxTheme.xaml" />
                 <ResourceDictionary Source="Theme/SquareButtonTheme.xaml" />
                 <ResourceDictionary Source="Theme/ItemListViewTheme.xaml" />
                 <ResourceDictionary Source="Theme/myRepeatButton.xaml" />

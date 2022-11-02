@@ -49,7 +49,7 @@
                             <Setter TargetName="Bd" Property="Panel.Background" Value="Transparent" />
                             <Setter TargetName="Bd" Property="Border.BorderBrush">
                                 <Setter.Value>
-                                    <SolidColorBrush>#272537</SolidColorBrush>
+                                    <SolidColorBrush>Transparent</SolidColorBrush>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>

@@ -217,7 +217,6 @@ namespace AubreysPeculiarities.MVVM.ViewModel
             //Starting State of View
             CurrentView = HomeVm;
             HomeButtonChecked = true;
-            SubMenuCollapsed = false;
 
 
             //Register for Messages from Other Views If a call is made to switch page
@@ -262,111 +261,77 @@ namespace AubreysPeculiarities.MVVM.ViewModel
         }
 
         //Add RadioButtons to be unchecked here as you generate properties for them.
-        private void UnCheckAllMenuButton()
+        private void UnCheckAllSubMenuButtons()
         {
-            HomeButtonChecked = false;
-            ItemButtonChecked = false;
-            ShopButtonChecked = false;
-            CreateButtonChecked = false;
-            SettingsButtonChecked = false;
-            AboutButtonChecked = false;
             GeneralButtonChecked = false;
             ArmorerButtonChecked = false;
             WeaponSmithButtonChecked = false;
             AlchemistButtonChecked = false;
             ArcaneSuppliesButtonChecked = false;
-            SubMenuCollapsed = false;
         }
 
         //Actions For setting Current Views and disable/enable buttons
         private void SetViewHome()
         {
             CurrentView = HomeVm;
-            UnCheckAllMenuButton();
             HomeButtonChecked = true;
         }
-
         private void SetViewItem()
         {
             CurrentView = ItemVm;
-            UnCheckAllMenuButton();
             ItemButtonChecked = true;
             
         }
-
-        private void SetViewShops()
-        {
-            CurrentView = ShopsVm;
-            UnCheckAllMenuButton();
-            SubMenuCollapsed = true;
-            ShopButtonChecked = true;
-        }
-
         private void SetViewCreate()
         {
             CurrentView = CreateItemVm;
-            UnCheckAllMenuButton();
             CreateButtonChecked = true;
         }
-
         private void SetViewSettings()
         {
             CurrentView = SettingsVm;
-            UnCheckAllMenuButton();
             SettingsButtonChecked = true;
         }
-
         private void SetViewAbout()
         {
             CurrentView = AboutVm;
-            UnCheckAllMenuButton();
             AboutButtonChecked = true;
         }
-
+        private void SetViewShops()
+        {
+            CurrentView = ShopsVm;
+            UnCheckAllSubMenuButtons();
+            ShopButtonChecked = true;
+        }
         private void SetArcaneSuppliesView()
         {
             CurrentView = ArcaneSuppliesVm;
-            UnCheckAllMenuButton();
             ShopButtonChecked = true;
             ArcaneSuppliesButtonChecked = true;
-            SubMenuCollapsed = true;
-
         }
-
         private void SetAlchemistView()
         {
             CurrentView = AlchemistVm;
-            UnCheckAllMenuButton();
             ShopButtonChecked = true;
             AlchemistButtonChecked = true;
-            SubMenuCollapsed = true;
         }
-
         private void SetWeaponSmithView()
         {
             CurrentView = WeaponSmithVm;
-            UnCheckAllMenuButton();
             ShopButtonChecked = true;
             WeaponSmithButtonChecked = true;
-            SubMenuCollapsed = true;
         }
-
         private void SetArmorerView()
         {
             CurrentView = ArmorerVm;
-            UnCheckAllMenuButton(); 
-            ArmorerButtonChecked = true;
             ShopButtonChecked = true;
-            SubMenuCollapsed = true;
+            ArmorerButtonChecked = true;
         }
-
         private void SetGeneralStoreView()
         {
             CurrentView = GeneralStoreVm;
-            UnCheckAllMenuButton();
-            GeneralButtonChecked = true;
             ShopButtonChecked = true;
-            SubMenuCollapsed = true;
+            GeneralButtonChecked = true;
         }
     }
 }
