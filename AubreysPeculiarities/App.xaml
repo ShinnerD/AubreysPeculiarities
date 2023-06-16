@@ -19,6 +19,9 @@
                 <ResourceDictionary Source="Theme/myItemScrollViewer.xaml" />
                 <ResourceDictionary Source="Theme/shopSubMenuTheme.xaml" />
                 <ResourceDictionary Source="Theme/ItemPropertyListBox.xaml" />
+                <ResourceDictionary Source="Theme/GroupBoxStyle.xaml"/>
+                <ResourceDictionary Source="/InputTextBoxStyle.xaml"/>
+                <ResourceDictionary Source="/ItemTypeToggleButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

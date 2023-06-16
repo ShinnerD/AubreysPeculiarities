@@ -4,6 +4,9 @@
     <SolidColorBrush x:Key="MainWindowBackgroundColor" Color="#272537" />
     <SolidColorBrush x:Key="SubMenuBackgroundColor" Color="#272545" />
 
+    <SolidColorBrush x:Key="BasePurpleGradient" Color="#A21162" />
+    
+    
     <!--  Text Colors  -->
     <SolidColorBrush x:Key="BrightTextColor" Color="#FAFDFF" />
     <SolidColorBrush x:Key="InputFieldBackgroundTextColor" Color="DarkGray" />
@@ -12,12 +15,28 @@
     <!--  Input boxes Colors  -->
     <SolidColorBrush x:Key="InputFieldBackgroundColor" Color="#353340" />
     <SolidColorBrush x:Key="InputFieldTextColor" Color="#CFCFCF" />
+
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FF454256"/>
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF454256"/>
+    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF454256"/>
+
+    <!-- Group Box Colors -->
+    <SolidColorBrush x:Key="GroupBoxBackgroundColor" Color="#22202F" />
+    <SolidColorBrush x:Key="GroupBoxBorderColor" Color="#353340" />
+    <SolidColorBrush x:Key="GroupBoxHeaderBackgroundColor" Color="#FF252422" />
+    <SolidColorBrush x:Key="GroupBoxHeaderTextColor" Color="White" />
+    
     
     <!--  Button Colors  -->
     <SolidColorBrush x:Key="ExitMinimizButtonColor" Color="#353340" />
     <SolidColorBrush x:Key="ExitMinimizButtonMouseOverColor" Color="#22202F" />
     <SolidColorBrush x:Key="MainMenuMouseOverButton" Color="#22202F" />
     <SolidColorBrush x:Key="MainMenuSelectedButton" Color="#22202F" />
+    <SolidColorBrush x:Key="ItemTypeSelectedButton" Color="#FFCCC7EC" />
+    <SolidColorBrush x:Key="ItemTypeMouseOverButton" Color="#FFCCC7EC" />
+    <SolidColorBrush x:Key="SimpleButtonSelectedColor" Color="#FFCCC7EC" />
+    <SolidColorBrush x:Key="SimpleButtonMouseOverColor" Color="#FFCCC7EC" />
+    <SolidColorBrush x:Key="SimpleButtonBackgroundColor" Color="#22202F" />
 
     <!--ListViewColors-->
     <SolidColorBrush x:Key="ListViewHeaderBackgroundColor" Color="#252422" />

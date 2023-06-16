@@ -4,10 +4,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border
-                        Width="40"
-                        Height="40"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
                         Background="Transparent"
-                        CornerRadius="10">
+                        CornerRadius="5">
                         <Border.Clip>
                             <RectangleGeometry
                                 RadiusX="5"
