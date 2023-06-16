@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:AubreysPeculiarities.MVVM.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:AubreysPeculiarities.MVVM.ViewModel"
     x:Name="GeneralStoreUserControl"
@@ -71,9 +70,7 @@
                         IsTabStop="False">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
-                                <Style.Setters>
-                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
-                                </Style.Setters>
+                                <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="name">
                                         <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
@@ -111,9 +108,7 @@
                         FontWeight="SemiBold">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
-                                <Style.Setters>
-                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
-                                </Style.Setters>
+                                <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="type">
                                         <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
@@ -151,9 +146,7 @@
                         FontWeight="SemiBold">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
-                                <Style.Setters>
-                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
-                                </Style.Setters>
+                                <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="weight">
                                         <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
@@ -193,9 +186,7 @@
                         FontWeight="SemiBold">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
-                                <Style.Setters>
-                                    <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
-                                </Style.Setters>
+                                <Setter Property="Foreground" Value="{StaticResource ListViewHeaderInactiveTextColor}" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ListOrderedBy}" Value="cost">
                                         <Setter Property="Foreground" Value="{StaticResource ListViewHeaderActiveTextColor}" />
@@ -656,7 +647,6 @@
                                                     </Border>
                                                 </ToolTip>
                                             </TextBlock.ToolTip>
-
                                         </TextBlock>
                                     </StackPanel>
                                 </Border>
@@ -871,11 +861,9 @@
                             TextAlignment="Left"
                             TextWrapping="Wrap" />
                     </StackPanel>
-
                 </Grid>
             </Border>
             <!--  Lower Section End  -->
         </StackPanel>
     </Grid>
-
 </UserControl>
